@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using YT_YumBlazor.Components;
 using YT_YumBlazor.Components.Account;
 using YT_YumBlazor.Data;
+using YT_YumBlazor.Repository;
+using YT_YumBlazor.Repository.IRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,7 @@ builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped<AuthenticationStateProvider, IdentityRevalidatingAuthenticationStateProvider>();
+builder.Services.AddScoped<ICategoryRepository,CategoryRepository>();
 
 builder.Services.AddAuthentication(options =>
     {
